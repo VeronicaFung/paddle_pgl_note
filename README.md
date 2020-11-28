@@ -5,13 +5,13 @@
     + [什么是Graph embedding?](#---graph-embedding-)
     + [什么方法可以实现Graph embedding？](#--------graph-embedding-)
     + [什么场景需要用到Graph embedding？](#--------graph-embedding-)
+    + [图神经网络](#-----)
     + [消息传递机制](#------)
     + [图卷积神经网络GCN](#-------gcn)
     + [图注意力网络GAT](#------gat)
     + [图神经网络模型进阶](#---------)
   * [图神经网络在药物相互作用预测问题上的文献理解](#----------------------)
   * [Citation](#citation)
-
 
 * 课程链接：https://aistudio.baidu.com/aistudio/course/introduce/1956
 * GPL github链接：https://github.com/PaddlePaddle/PGL
@@ -44,7 +44,7 @@
 ### 什么场景需要用到Graph embedding？
 ![image](https://github.com/VeronicaFung/paddle_pgl_note/blob/main/dpl/application.png)
 
-###图神经网络
+### 图神经网络
 
 
 ![image](https://github.com/VeronicaFung/paddle_pgl_note/blob/main/dpl/GNN.png)
@@ -54,6 +54,7 @@
 <br>**Send**: 源节点发送消息，即边上的源节点，往目标节点发送特征
 <br>**Recv**: 目标节点接受消息，即目标节点对收到的特征进行聚合
 <br>![image](https://github.com/VeronicaFung/paddle_pgl_note/blob/main/dpl/message_passing.png)
+
 ### 图卷积神经网络GCN
 <br>图卷积神经网络（Graph Convolutional Network, GCN）
 <br>**图像卷积**:将一个像素点周围的像素按照不同的权重叠加起来。
