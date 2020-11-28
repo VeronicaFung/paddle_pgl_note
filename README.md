@@ -52,7 +52,7 @@
 消息传递包括两部分：
 <br>**Send**: 源节点发送消息，即边上的源节点，往目标节点发送特征
 <br>**Recv**: 目标节点接受消息，即目标节点对收到的特征进行聚合
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/message passing.png)
+<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/message_passing.png)
 ### 图卷积神经网络GCN
 <br>图卷积神经网络（Graph Convolutional Network, GCN）
 <br>**图像卷积**:将一个像素点周围的像素按照不同的权重叠加起来。
@@ -236,8 +236,8 @@ def gat(graph_wrapper, node_feature, hidden_size):
 <br>分析了embedding是否能保留药物之间interdependent的关联。
 
 ## Citation
-[1] 图神经网络之图卷积网络——GCN (https://blog.csdn.net/zbp_12138/article/details/110246797)
-[2] Veličković P, Cucurull G, Casanova A, et al. Graph attention networks[J]. arXiv preprint arXiv:1710.10903, 2017.
-[3] GAT学习笔记 (https://ai.baidu.com/forum/topic/show/972764)
-[4] Jiang P, Huang S, Fu Z, et al. Deep graph embedding for prioritizing synergistic anticancer drug combinations[J]. Computational and Structural Biotechnology Journal, 2020, 18: 427-438.
-[5] Zitnik M, Agrawal M, Leskovec J. Modeling polypharmacy side effects with graph convolutional networks[J]. Bioinformatics, 2018, 34(13): i457-i466.
+<br>[1] 图神经网络之图卷积网络——GCN (https://blog.csdn.net/zbp_12138/article/details/110246797)
+<br>[2] Veličković P, Cucurull G, Casanova A, et al. Graph attention networks[J]. arXiv preprint arXiv:1710.10903, 2017.
+<br>[3] GAT学习笔记 (https://ai.baidu.com/forum/topic/show/972764)
+<br>[4] Jiang P, Huang S, Fu Z, et al. Deep graph embedding for prioritizing synergistic anticancer drug combinations[J]. Computational and Structural Biotechnology Journal, 2020, 18: 427-438.
+<br>[5] Zitnik M, Agrawal M, Leskovec J. Modeling polypharmacy side effects with graph convolutional networks[J]. Bioinformatics, 2018, 34(13): i457-i466.
