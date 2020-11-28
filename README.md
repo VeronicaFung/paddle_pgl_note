@@ -44,10 +44,16 @@
 ### 什么场景需要用到Graph embedding？
 ![image](https://github.com/VeronicaFung/paddle_pgl_note/blob/main/dpl/application.png)
 
-### 图神经网络
-
+### 图神经网络学习笔记
 
 ![image](https://github.com/VeronicaFung/paddle_pgl_note/blob/main/dpl/GNN.png)
+<br> 图神经网络划分为五大类别：
+* 图卷积网络（Graph Convolution Networks，GCN）
+* 图注意力网络（Graph Attention Networks）
+* 图自编码器（ Graph Autoencoders）
+* 图生成网络（ Graph Generative Networks）
+* 图时空网络（Graph Spatial-temporal Networks）
+
 
 ### 消息传递机制
 消息传递包括两部分：
