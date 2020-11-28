@@ -42,24 +42,24 @@
 除了上述列出的经典算法外，还有许多能够进行graph embedding。
 
 ### 什么场景需要用到Graph embedding？
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/application.png)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/application.png)
 
 
 ###图神经网络
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/GNN.png)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/GNN.png)
 
 ### 消息传递机制
 消息传递包括两部分：
 <br>**Send**: 源节点发送消息，即边上的源节点，往目标节点发送特征
 <br>**Recv**: 目标节点接受消息，即目标节点对收到的特征进行聚合
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/message_passing.png)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/message_passing.png)
 ### 图卷积神经网络GCN
 <br>图卷积神经网络（Graph Convolutional Network, GCN）
 <br>**图像卷积**:将一个像素点周围的像素按照不同的权重叠加起来。
 <br>**图结构卷积**:将一个节点周围的邻居按照不同的权重叠加起来。
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gcn_formula.JPG)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gcn_formula.JPG)
 <br>附上一个学习时手写的结构，包括了前边描述的消息传递过程，合GCN中关键公式的一步步解析：
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gcn_structure_handwriting.jpg)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gcn_structure_handwriting.jpg)
 
 ```
 import paddle.fluid.layers as L
@@ -121,13 +121,13 @@ def gcn_layer(gw, feature, hidden_size, activation, name, norm=None):
 
 
 ### 图注意力网络GAT
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_paddle.JPG)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_paddle.JPG)
  <br>GAT(Graph attention network)优势相比于GCN(等权重对邻居信息进行卷积操作)在于通过 Attention 机制，为不同节点分配不同权重。GAT可以采用单头或者多头的注意力机制[2]：
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_frompaper.JPG)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_frompaper.JPG)
 <br>具体计算时，单头的GAT[3]:
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_单头.JPG)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_单头.JPG)
 <br>多头GAT[3]:
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_多头.JPG)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_多头.JPG)
 <br>课堂示例中通过paddle-pgl实现的GAT函数：
 
 ```
@@ -214,7 +214,7 @@ def gat(graph_wrapper, node_feature, hidden_size):
 <br>**文章大纲**
 <br>文章通过整合药物-药物协同关联网络（Drug-Drug Synergy association network, DDS)，药物-靶蛋白关联网络（Drug-Target Interaction Network，DTI）和蛋白相互作用网络（protein-protein interaction network， PPI)三个维度信息，构建了药物-蛋白质异质网络，基于改造版decagon算法对该异质网络进行学习，从而预测药物协同分数，并对网络嵌入得到的低维表示进行分析。
 <br>**原文中的模型框架**
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/example_workflow.JPG)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/example_workflow.JPG)
 <br>**文章理解**
 
 **1. 网络是如何构建的？**
@@ -230,7 +230,7 @@ def gat(graph_wrapper, node_feature, hidden_size):
 <br>比较有趣的是作者进行了cell line specific的预测。我的理解是他们将不同细胞系的协同情况定义了不同的(v_i,r,v_j)，类似于decagon中对不同的side effect进行预测，将r定义为不同细胞系中的关联关系R集合（不确定自己理解是否正确）。
 
 **3. 该算法的performance？**
-<br>![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/performance.JPG)
+![image](https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/performance.JPG)
 
 **4. 其他分析？**
 <br>分析了embedding是否能保留药物之间interdependent的关联。

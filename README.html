@@ -1104,21 +1104,21 @@ body .markdown-body
 </ul>
 <p>除了上述列出的经典算法外，还有许多能够进行graph embedding。</p>
 <h3 id="graph-embedding_2">什么场景需要用到Graph embedding？<a class="headerlink" href="#graph-embedding_2" title="Permanent link"></a></h3>
-<p><br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/application.png" /></p>
+<p><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/application.png" /></p>
 <h3 id="_2">图神经网络<a class="headerlink" href="#_2" title="Permanent link"></a></h3>
-<p><br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/GNN.png" /></p>
+<p><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/GNN.png" /></p>
 <h3 id="_3">消息传递机制<a class="headerlink" href="#_3" title="Permanent link"></a></h3>
 <p>消息传递包括两部分：
 <br><strong>Send</strong>: 源节点发送消息，即边上的源节点，往目标节点发送特征
 <br><strong>Recv</strong>: 目标节点接受消息，即目标节点对收到的特征进行聚合
-<br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/message passing.png" /></p>
+<img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/message_passing.png" /></p>
 <h3 id="gcn">图卷积神经网络GCN<a class="headerlink" href="#gcn" title="Permanent link"></a></h3>
 <p><br>图卷积神经网络（Graph Convolutional Network, GCN）
 <br><strong>图像卷积</strong>:将一个像素点周围的像素按照不同的权重叠加起来。
 <br><strong>图结构卷积</strong>:将一个节点周围的邻居按照不同的权重叠加起来。
-<br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gcn_formula.JPG" />
+<img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gcn_formula.JPG" />
 <br>附上一个学习时手写的结构，包括了前边描述的消息传递过程，合GCN中关键公式的一步步解析：
-<br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gcn_structure_handwriting.jpg" /></p>
+<img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gcn_structure_handwriting.jpg" /></p>
 <div class="codehilite"><pre>import paddle.fluid.layers as L
 
 def gcn_layer(gw, feature, hidden_size, activation, name, norm=None):
@@ -1176,13 +1176,13 @@ def gcn_layer(gw, feature, hidden_size, activation, name, norm=None):
 </pre></div>
 
 <h3 id="gat">图注意力网络GAT<a class="headerlink" href="#gat" title="Permanent link"></a></h3>
-<p><br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_paddle.JPG" />
+<p><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_paddle.JPG" />
  <br>GAT(Graph attention network)优势相比于GCN(等权重对邻居信息进行卷积操作)在于通过 Attention 机制，为不同节点分配不同权重。GAT可以采用单头或者多头的注意力机制[2]：
-<br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_frompaper.JPG" />
+<img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_frompaper.JPG" />
 <br>具体计算时，单头的GAT[3]:
-<br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_单头.JPG" />
+<img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_单头.JPG" />
 <br>多头GAT[3]:
-<br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_多头.JPG" />
+<img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/gat_多头.JPG" />
 <br>课堂示例中通过paddle-pgl实现的GAT函数：</p>
 <div class="codehilite"><pre>from pgl.utils import paddle_helper
 import paddle.fluid as fluid
@@ -1264,7 +1264,7 @@ def gat(graph_wrapper, node_feature, hidden_size):
 <br><strong>文章大纲</strong>
 <br>文章通过整合药物-药物协同关联网络（Drug-Drug Synergy association network, DDS)，药物-靶蛋白关联网络（Drug-Target Interaction Network，DTI）和蛋白相互作用网络（protein-protein interaction network， PPI)三个维度信息，构建了药物-蛋白质异质网络，基于改造版decagon算法对该异质网络进行学习，从而预测药物协同分数，并对网络嵌入得到的低维表示进行分析。
 <br><strong>原文中的模型框架</strong>
-<br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/example_workflow.JPG" />
+<img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/example_workflow.JPG" />
 <br><strong>文章理解</strong></p>
 <p><strong>1. 网络是如何构建的？</strong>
 <br><strong>DDS</strong>: O&rsquo;Neil数据集提供的38个药物在39个细胞系上的Loewe synergy分数，该数据集上协同分数的分布基本在[-60,60]之间。该作者将分值大于30的认为是协同，设为阳性samples；而剩下的设为阴性samples。
@@ -1277,12 +1277,12 @@ def gat(graph_wrapper, node_feature, hidden_size):
 <br>那这个方法怎么用在协同分值的预测问题上呢？其实作者基本就是采用了decagon的思路，采用了“encoder-decoder”结构，对所构建的异质网络中的节点（v_i，特征为x_i）通过4层GCN（每层间加上一个ReLu激活函数，进入decoder前再通过一个sigmoid函数）表示为z_i，再通过decoder形成输出（$s(v_{i}, v_{j})$)。
 <br>比较有趣的是作者进行了cell line specific的预测。我的理解是他们将不同细胞系的协同情况定义了不同的(v_i,r,v_j)，类似于decagon中对不同的side effect进行预测，将r定义为不同细胞系中的关联关系R集合（不确定自己理解是否正确）。</p>
 <p><strong>3. 该算法的performance？</strong>
-<br><img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/performance.JPG" /></p>
+<img alt="image" src="https://github.com/VeronicaFung/paddle_pgl_note/tree/main/dpl/performance.JPG" /></p>
 <p><strong>4. 其他分析？</strong>
 <br>分析了embedding是否能保留药物之间interdependent的关联。</p>
 <h2 id="citation">Citation<a class="headerlink" href="#citation" title="Permanent link"></a></h2>
-<p>[1] 图神经网络之图卷积网络——GCN (<a href="https://blog.csdn.net/zbp_12138/article/details/110246797">https://blog.csdn.net/zbp_12138/article/details/110246797</a>)
-[2] Veličković P, Cucurull G, Casanova A, et al. Graph attention networks[J]. arXiv preprint arXiv:1710.10903, 2017.
-[3] GAT学习笔记 (<a href="https://ai.baidu.com/forum/topic/show/972764">https://ai.baidu.com/forum/topic/show/972764</a>)
-[4] Jiang P, Huang S, Fu Z, et al. Deep graph embedding for prioritizing synergistic anticancer drug combinations[J]. Computational and Structural Biotechnology Journal, 2020, 18: 427-438.
-[5] Zitnik M, Agrawal M, Leskovec J. Modeling polypharmacy side effects with graph convolutional networks[J]. Bioinformatics, 2018, 34(13): i457-i466.</p></article></body></html>
+<p><br>[1] 图神经网络之图卷积网络——GCN (<a href="https://blog.csdn.net/zbp_12138/article/details/110246797">https://blog.csdn.net/zbp_12138/article/details/110246797</a>)
+<br>[2] Veličković P, Cucurull G, Casanova A, et al. Graph attention networks[J]. arXiv preprint arXiv:1710.10903, 2017.
+<br>[3] GAT学习笔记 (<a href="https://ai.baidu.com/forum/topic/show/972764">https://ai.baidu.com/forum/topic/show/972764</a>)
+<br>[4] Jiang P, Huang S, Fu Z, et al. Deep graph embedding for prioritizing synergistic anticancer drug combinations[J]. Computational and Structural Biotechnology Journal, 2020, 18: 427-438.
+<br>[5] Zitnik M, Agrawal M, Leskovec J. Modeling polypharmacy side effects with graph convolutional networks[J]. Bioinformatics, 2018, 34(13): i457-i466.</p></article></body></html>
